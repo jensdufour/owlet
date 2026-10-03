@@ -15,6 +15,9 @@
 - Freshness uses the V3 cloud data_updated_at, not successful local polling or
   unchanged physiological values. The 120-second guard is not a medical SLA;
   charging may legitimately retain old samples. V2 has no shared timestamp.
+- Version2026.10.1 exempts the existing manual base-station switch from sample
+  freshness, retaining its original charging restriction. Do not prevent a user
+  from manually starting monitoring just because stopped monitoring has old data.
 - tests/check_runtime.py runs eleven isolated checks with native HA classes.
   The legacy tests were copied from a HA Core test environment and do not run
   standalone. Do not report them as passing without porting and running them.

@@ -22,6 +22,7 @@ from custom_components.owlet.config_flow import OwletConfigFlow
 from custom_components.owlet.coordinator import OwletCoordinator
 from custom_components.owlet.sensor import OwletSensor, OwletSleepSensor, SENSORS
 from custom_components.owlet.binary_sensor import OwletAwakeSensor
+from custom_components.owlet.switch import OwletBaseSwitch, SWITCHES
 
 
 class RuntimeChecks(unittest.IsolatedAsyncioTestCase):
@@ -166,6 +167,12 @@ class RuntimeChecks(unittest.IsolatedAsyncioTestCase):
             datetime.now(timezone.utc) - timedelta(seconds=121)).isoformat()
         self.assertFalse(heart.available)
         self.assertTrue(battery.available)
+        sock.properties["base_station_on"] = False
+        base_switch = OwletBaseSwitch(coordinator, SWITCHES[0])
+        self.assertTrue(base_switch.available)
+        sock.properties["charging"] = 1
+        self.assertFalse(base_switch.available)
+        sock.properties["charging"] = 0
         for timestamp in (None, "invalid", "2026-10-03T01:00:00"):
             sock.raw_properties["REAL_TIME_VITALS"]["data_updated_at"] = timestamp
             self.assertFalse(heart.available)

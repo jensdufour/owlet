@@ -1,6 +1,12 @@
 # Changelog
 
 <!--next-version-placeholder-->
+## 2026.10.1 (2026-10-03)
+
+- Preserve the existing manual base-station switch when V3 samples are stale;
+	keep the original charging restriction. Extend the native regression to cover
+	this case. No device command is issued by the test or the update.
+
 ## 2026.10.0 (2026-10-03)
 
 First experimental, AI-assisted maintenance release of the archived upstream.

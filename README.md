@@ -60,7 +60,8 @@ This integration provides the following entities:
 - Where the device exposes them: sleep state, awake state, movement, and a
 	diagnostic **Last cloud update** timestamp for V3 socks.
 
-The existing base-station switch is retained. No alarm-silencing controls,
+The existing base-station switch and its charging restriction are retained;
+stale vitals do not prevent an explicit manual switch action. No alarm-silencing controls,
 automatic device restarts, or baby-care automations are added.
 
 ## Options
@@ -88,7 +89,7 @@ world-region accounts and physical alarm delivery have not been live-validated.
 
 ## Development and verification
 
-Version `2026.10.0` has eleven isolated regressions using actual HA `2026.9.4`
+Version `2026.10.1` has eleven isolated regressions using actual HA `2026.9.4`
 classes and Python `3.14.6`. They cover modern options/coordinator APIs, token and
 reauthentication handling, region migration, retry behavior and sparse/stale data.
 A bounded EU sign-in/device/property check passed for one charging V3 sock; this

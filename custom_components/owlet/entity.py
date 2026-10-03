@@ -32,7 +32,13 @@ class OwletBaseEntity(CoordinatorEntity[OwletCoordinator], Entity):
             and properties.get(description.key) is not None
             and (
                 description.available_during_charging
-                or (properties.get("charging") == 0 and self.coordinator.vitals_fresh)
+                or (
+                    properties.get("charging") == 0
+                    and (
+                        description.key == "base_station_on"
+                        or self.coordinator.vitals_fresh
+                    )
+                )
             )
         )
 
