@@ -19,6 +19,7 @@ from homeassistant.const import (
 )
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.typing import StateType
 
 from .const import DOMAIN, SLEEP_STATES
@@ -34,6 +35,13 @@ class OwletSensorEntityDescription(SensorEntityDescription):
 
 
 SENSORS: tuple[OwletSensorEntityDescription, ...] = (
+    OwletSensorEntityDescription(
+        key="last_updated",
+        translation_key="last_updated",
+        device_class=SensorDeviceClass.TIMESTAMP,
+        entity_category=EntityCategory.DIAGNOSTIC,
+        available_during_charging=True,
+    ),
     OwletSensorEntityDescription(
         key="battery_percentage",
         translation_key="batterypercent",
@@ -146,18 +154,12 @@ class OwletSensor(OwletBaseEntity, SensorEntity):
         self._attr_unique_id = f"{self.sock.serial}-{description.key}"
 
     @property
-    def available(self) -> bool:
-        """Return if entity is available."""
-        return super().available and (
-            not self.sock.properties["charging"]
-            or self.entity_description.available_during_charging
-        )
-
-    @property
     def native_value(self) -> StateType:
         """Return sensor value."""
 
-        return self.sock.properties[self.entity_description.key]
+        if self.entity_description.key == "last_updated":
+            return self.coordinator.vitals_updated_at
+        return self.sock.properties.get(self.entity_description.key)
 
 
 class OwletSleepSensor(OwletSensor):
@@ -181,7 +183,7 @@ class OwletSleepSensor(OwletSensor):
     @property
     def native_value(self) -> StateType:
         """Return sensor value."""
-        return SLEEP_STATES[self.sock.properties["sleep_state"]]
+        return SLEEP_STATES.get(self.sock.properties.get("sleep_state"))
 
 
 class OwletOxygenAverageSensor(OwletSensor):
@@ -208,10 +210,6 @@ class OwletOxygenAverageSensor(OwletSensor):
         """Return if entity is available."""
         return (
             super().available
-            and (
-                not self.sock.properties["charging"]
-                or self.entity_description.available_during_charging
-            )
             and (
                 self.sock.properties["oxygen_10_av"] >= 0
                 and self.sock.properties["oxygen_10_av"] <= 100

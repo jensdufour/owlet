@@ -9,6 +9,7 @@
             "invalid_credentials": "Entered credentials are incorrect",
             "invalid_email": "Entered email address is incorrect",
             "invalid_password": "Entered password is incorrect",
+            "no_devices": "No supported Owlet socks found in this region",
             "unknown": "Unknown error occured"
         },
         "step": {
@@ -67,6 +68,9 @@
             }
         },
         "sensor": {
+            "last_updated": {
+                "name": "Last cloud update"
+            },
             "batterymin": {
                 "name": "Battery remaining"
             },
@@ -114,7 +118,7 @@
         "step": {
             "init": {
                 "data": {
-                    "pollinterval": "Polling interval in seconds, min 10"
+                    "scan_interval": "Polling interval in seconds, minimum 5"
                 },
                 "title": "Configure options for Owlet"
             }

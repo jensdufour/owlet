@@ -6,12 +6,25 @@ on:
   schedule:
     - cron:  '0 0 * * *'
 
+permissions:
+  contents: read
+
 jobs:
+  runtime:
+    name: Native HA regressions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test in the supported HA runtime
+        run: |
+          docker run --rm -v "$PWD:/work:ro" -w /work \
+            --entrypoint /bin/sh ghcr.io/home-assistant/home-assistant:2026.9.4 \
+            -c 'pip install --no-deps --target /tmp/owlet-deps pyowletapi==2025.4.1 && PYTHONPATH=/tmp/owlet-deps python tests/check_runtime.py'
   hassfest:
     name: "Hassfest validation"
     runs-on: "ubuntu-latest"
     steps:
-        - uses: "actions/checkout@v3"
+        - uses: "actions/checkout@v4"
         - uses: "home-assistant/actions/hassfest@master"
   hacs:
     name: "HACS Action"

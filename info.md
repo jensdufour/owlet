@@ -1,35 +1,16 @@
 # Owlet Custom Integration
 
-[![GitHub Release][releases-shield]][releases]
-[![GitHub Activity][commits-shield]][commits]
-
-[![License][license-shield]][license]
-
-[![hacs][hacsbadge]][hacs]
-[![Project Maintenance][maintenance-shield]][user_profile]
-
-A custom component for the Owlet smart sock
+Unofficial, experimental fork of the archived
+[ryanbdclark/owlet](https://github.com/ryanbdclark/owlet), maintained with the aid
+of AI. Not affiliated with Owlet. Not a medical or safety system, and not a
+replacement for the official hardware/app or alarms.
 
 ## Installation
 
-1. Click install.
-2. Reboot Home Assistant.
-3. Hard refresh browser cache.
-4. [![Add Integration][add-integration-badge]][add-integration] or in the HA UI go to "Configuration" -> "Integrations" click "+" and search for "Owlet Smart Sock".
+1. Back up HA. Add `jensdufour/owlet` as a HACS custom **Integration** repository.
+2. Download the fork and restart Home Assistant Core (2026.9.4 or newer).
+3. Add **Owlet Smart Sock** in Devices & services; choose `europe` for EU accounts.
 
-<!---->
-
----
-
-[commits-shield]: https://img.shields.io/github/commit-activity/w/ryanbdclark/owlet?style=for-the-badge
-[commits]: https://github.com/ryanbdclark/owlet/commits/main
-[hacs]: https://github.com/hacs/integration
-[hacsbadge]: https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge
-[license]: LICENSE
-[license-shield]: https://img.shields.io/github/license/ryanbdclark/owlet.svg?style=for-the-badge
-[maintenance-shield]: https://img.shields.io/badge/maintainer-Ryan%20Clark%20%40ryanbdclark-blue.svg?style=for-the-badge
-[releases-shield]: https://img.shields.io/github/release/ryanbdclark/owlet.svg?style=for-the-badge
-[releases]: https://github.com/ryanbdclark/owlet/releases
-[user_profile]: https://github.com/ryanbdclark
-[add-integration]: https://my.home-assistant.io/redirect/config_flow_start?domain=owlet
-[add-integration-badge]: https://my.home-assistant.io/badges/config_flow_start.svg
+Do not install both forks together or delete an existing Owlet config entry just
+to change the HACS source. See the [README](https://github.com/jensdufour/owlet)
+for migration, freshness limits, validation scope and safe issue reporting.

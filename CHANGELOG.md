@@ -1,6 +1,23 @@
 # Changelog
 
 <!--next-version-placeholder-->
+## 2026.10.0 (2026-10-03)
+
+First experimental, AI-assisted maintenance release of the archived upstream.
+
+- Fix current HA options/coordinator APIs, apply polling changes, and avoid
+	reloading on ordinary token refresh.
+- Fix expired-token errors, validate device discovery at login, persist latest
+	tokens, classify temporary failures and bound cloud calls to 30 seconds.
+- Include the region in account identity with a v1-to-v2 migration.
+- Hide missing/stale V3 vital readings, expose the source timestamp and handle
+	unknown sleep states without reporting a false awake state.
+- Keep the reverted `pyowletapi==2025.4.1` pin, correct translations, and add
+	eleven runnable native-HA regressions. Add fork, AI and safety disclosures.
+
+EU sign-in/discovery passed for a charging V3 sock. Active/overnight monitoring,
+world-region accounts, camera support and alarm reliability are not validated.
+
 ## 2025.4.3 (2025-04-15)
 ### Fix
 * Changes to how the sensors are stored to solve the issue where only one device is added, thanks [`@MarjovanLier`](https://github.com/MarjovanLier). ([`1244bff`](https://github.com/ryanbdclark/owlet/commit/1244bffcb48d7337a9d7a0da518959fe4b31a230))

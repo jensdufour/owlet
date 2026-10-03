@@ -23,6 +23,20 @@ class OwletBaseEntity(CoordinatorEntity[OwletCoordinator], Entity):
         self.sock = coordinator.sock
 
     @property
+    def available(self) -> bool:
+        """Reject missing fields and stale or charging-only vital readings."""
+        description = self.entity_description
+        properties = self.sock.properties
+        return (
+            super().available
+            and properties.get(description.key) is not None
+            and (
+                description.available_during_charging
+                or (properties.get("charging") == 0 and self.coordinator.vitals_fresh)
+            )
+        )
+
+    @property
     def device_info(self) -> DeviceInfo:
         """Return the device info of the device."""
         return DeviceInfo(
