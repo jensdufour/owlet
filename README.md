@@ -106,6 +106,11 @@ environment. The workflow also runs the native checks inside HA's release image.
 The older `test_*.py` files are inherited HA Core fixtures, not a standalone test
 suite; this fork's runnable regression entry point is `tests/check_runtime.py`.
 
+HACS branding is bundled at `custom_components/owlet/brand/icon.png`. The icon is
+the original Owlet asset from [Home Assistant brands](https://github.com/home-assistant/brands/blob/03dcc9c3436e48c295fe9ca3055ee5ddfda47cb3/custom_integrations/owlet/icon.png),
+not a replacement logo. Keep it in the integration and release archive; HACS can
+no longer rely on the centrally hosted Owlet brand.
+
 For a release, validate the changes, commit and tag them, then attach `owlet.zip`
 created with `git archive --format=zip <tag>:custom_components/owlet` to that
 GitHub release. HACS installs the published archive. Report reproducible failures
