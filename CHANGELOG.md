@@ -1,6 +1,13 @@
 # Changelog
 
 <!--next-version-placeholder-->
+## 2026.10.2 (2026-10-26)
+
+- Bundle the original Owlet icon for HACS branding validation after its removal
+	from the central Home Assistant brands repository.
+- Correct the fork documentation to identify the existing Apache-2.0 license.
+- No sensor, polling, dependency, account migration or device-control changes.
+
 ## 2026.10.1 (2026-10-03)
 
 - Preserve the existing manual base-station switch when V3 samples are stale;

@@ -16,7 +16,7 @@ This is an **unofficial, experimental maintenance fork** of
 [ryanbdclark/owlet](https://github.com/ryanbdclark/owlet), whose repository is
 archived. We are working on this fork **with the aid of AI**. AI-assisted changes
 are reviewed and tested, but that does not guarantee correctness or reliability.
-Original authors retain their attribution and the existing MIT license.
+Original authors retain their attribution and the existing Apache-2.0 license.
 
 This project is not affiliated with or endorsed by Owlet. It depends on an
 unofficial cloud API and can fail, lag, or stop working without notice. **Do not

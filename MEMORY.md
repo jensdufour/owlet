@@ -1,12 +1,14 @@
 # Owlet Maintenance Notes
 
+- Version2026.10.2 is a packaging-only update: bundled branding and corrected
+  license documentation, without runtime, dependency or account changes.
 - Bundle the original 256x256 Owlet PNG at custom_components/owlet/brand/icon.png.
   Home Assistant brands removed its central copy in c2bcb2f06d16a0c82f7963c47c33ce67b8634bf2;
   HACS therefore needs the integration-local asset. Source brands commit
   03dcc9c3436e48c295fe9ca3055ee5ddfda47cb3; icon Git blob
   06da0a79b6a8670cff9d13139c2176cc775fa0c5. Preserve the asset in release ZIPs.
 - This is the experimental `jensdufour/owlet` fork of archived
-  `ryanbdclark/owlet`. Preserve the MIT license and original attribution. Keep
+  `ryanbdclark/owlet`. Preserve the Apache-2.0 license and original attribution. Keep
   the AI-assisted development and non-medical/safety disclaimers prominent.
 - Preserve domain `owlet` and serial-based entity/device IDs. Account identity
   version 2 adds `europe_` or `world_`; migration must preserve data and options.
